@@ -12,7 +12,8 @@ entity SLOT is
 		INPUT_CPU_WR : in std_logic;
 		INPUT_RESET : in std_logic;
 		OUTPUT_SLTSL2 : out std_logic;
-		OUTPUT_SLTSL3 : out std_logic
+		OUTPUT_SLTSL3 : out std_logic;
+		UNUSED : out std_logic_vector(8 downto 0)
 	);
 	attribute pin_assign : string;
 	attribute pin_assign of INPUT_CPU_A15_A14 : signal is "36,35";
@@ -25,6 +26,7 @@ entity SLOT is
 	attribute pin_assign of INPUT_RESET : signal is "37";
 	attribute pin_assign of OUTPUT_SLTSL2 : signal is "43";
 	attribute pin_assign of OUTPUT_SLTSL3 : signal is "44";
+	attribute pin_assign of UNUSED : signal is "9,8,7,6,5,4,3,2,1";
 end SLOT;
 
 architecture RTL of SLOT is
@@ -69,4 +71,6 @@ begin
 			REG_A8 <= INPUT_CPU_DATA;
 		end if;
 	end process;
+
+	UNUSED <= "000000000";
 end RTL;
